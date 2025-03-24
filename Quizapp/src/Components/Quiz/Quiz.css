@@ -1,0 +1,86 @@
+/* Quiz.css */
+
+/* Styling for the overall container */
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Style for the quiz question */
+  .container h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the unordered list (options) */
+  .container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .container ul li {
+    font-size: 18px;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #e2e2e2;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  /* Change background color when hovering over an option */
+  .container ul li:hover {
+    background-color: #d1d1d1;
+  }
+  
+  /* Style for the 'Next' button */
+  .container button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  /* Change button color on hover */
+  .container button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Style for the index text (question number) */
+  .index {
+    text-align: center;
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+    font-style: italic;
+  }
+  
+  hr {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #ccc;
+  }
+  
+
+
+  .container .correct {
+    background: #a2ffae ;
+    border-color: #13ff33;
+  }
+
+  .container .wrong{
+    background: #ffa2a2 ;
+    border-color: #ff1313;
+  }
