@@ -24,20 +24,20 @@ npm run dev
 
 ##  Folder Structure
 
-/quiz-app
-  /src
-    /assets
-      /data.js        # Contains the question data
-    /components
-      /Quiz.js        # The main quiz component
-    App.js            # The root component that renders the Quiz component
-    index.js          # Entry point for React app
-  /public
-    index.html        # Main HTML file
-  package.json        # Project dependencies and scripts
-  tailwind.config.js  # Tailwind CSS configuration
-  postcss.config.js   # PostCSS configuration
-  README.md           # Project documentation
+/quiz-app <br>
+  /src <br>
+    /assets <br>
+      /data.js        # Contains the question data <br>
+    /components <br>
+      /Quiz.js        # The main quiz component <br>
+    App.js            # The root component that renders the Quiz component <br>
+    index.js          # Entry point for React app <br>
+  /public <br>
+    index.html        # Main HTML file <br>
+  package.json        # Project dependencies and scripts <br>
+  tailwind.config.js  # Tailwind CSS configuration <br>
+  postcss.config.js   # PostCSS configuration <br>
+  README.md           # Project documentation <br>
 
 
 
