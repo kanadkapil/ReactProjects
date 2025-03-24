@@ -21,7 +21,16 @@ const Quiz = () => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const themes = ["light", "dark", "cupcake", "bumblebee", "emerald", "lofi", "coffee", "cyberpunk"];
+  const themes = [
+    "light",
+    "dark",
+    "cupcake",
+    "bumblebee",
+    "emerald",
+    "lofi",
+    "coffee",
+    "cyberpunk",
+  ];
 
   const startQuiz = (selectedCategory) => {
     setCategory(selectedCategory);
@@ -38,7 +47,10 @@ const Quiz = () => {
         setScore((prev) => prev + 1);
       } else {
         element.target.classList.add("bg-red-500", "text-white");
-        option_array[questions[index].ans - 1].current.classList.add("bg-green-500", "text-white");
+        option_array[questions[index].ans - 1].current.classList.add(
+          "bg-green-500",
+          "text-white"
+        );
       }
       setLock(true);
     }
@@ -53,7 +65,11 @@ const Quiz = () => {
       setIndex(index + 1);
       setLock(false);
       option_array.forEach((option) => {
-        option.current.classList.remove("bg-red-500", "bg-green-500", "text-white");
+        option.current.classList.remove(
+          "bg-red-500",
+          "bg-green-500",
+          "text-white"
+        );
       });
     }
   };
@@ -67,12 +83,27 @@ const Quiz = () => {
     setLock(false);
   };
 
+  const handleCategorySelect = (cat) => {
+    const allQuestions = data[cat]; // Get all questions from the selected category
+    const shuffledQuestions = allQuestions.sort(() => Math.random() - 0.5); // Shuffle
+    const selectedQuestions = shuffledQuestions.slice(0, 5); // Pick 5 random questions
+
+    setCategory(cat);
+    setQuestions(selectedQuestions);
+    setIndex(0);
+    setScore(0);
+    setResult(false);
+    setLock(false);
+  };
+
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-base-100">
       <div className="w-full max-w-xl p-6 bg-base-200 rounded-lg shadow-lg">
         {/* Theme Selector */}
         <div className="mb-4 text-center">
-          <label className="block text-lg font-semibold mb-2">Select Theme</label>
+          <label className="block text-lg font-semibold mb-2">
+            Select Theme
+          </label>
           <select
             value={theme}
             onChange={(e) => setTheme(e.target.value)}
@@ -88,23 +119,33 @@ const Quiz = () => {
 
         {!category ? (
           <div className="text-center">
-            <h2 className="text-3xl font-semibold text-gray-800 mb-4">Select a Category</h2>
+            <h2 className="text-3xl font-semibold text-gray-800 mb-4">
+              Select a Category
+            </h2>
             <div className="grid gap-4">
               {Object.keys(data).map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => startQuiz(cat)}
-                  className="btn btn-primary"
-                >
-                  {cat}
-                </button>
+                <div key={cat}>
+                  <button
+                    onClick={() => handleCategorySelect(cat)}
+                    className="btn btn-primary"
+                  >
+                    {cat}
+                  </button>
+                  <p className="mt-2 text-gray-600">
+                    {data[cat].length} questions available
+                  </p>
+                </div>
               ))}
             </div>
           </div>
         ) : result ? (
           <div className="text-center">
-            <h2 className="text-3xl font-semibold text-gray-800 mb-4">Quiz Completed!</h2>
-            <p className="text-xl text-gray-700">Your score: {score} / {questions.length}</p>
+            <h2 className="text-3xl font-semibold text-gray-800 mb-4">
+              Quiz Completed!
+            </h2>
+            <p className="text-xl text-gray-700">
+              Your score: {score} / {questions.length}
+            </p>
             <button onClick={resetQuiz} className="btn btn-warning w-full mt-4">
               Reset Quiz
             </button>
@@ -115,16 +156,32 @@ const Quiz = () => {
               {index + 1}. {questions[index].question}
             </h2>
             <ul className="space-y-4">
-              <li ref={Option1} className="p-4 bg-blue-100 rounded-md cursor-pointer hover:bg-blue-200 transition" onClick={(e) => checkAns(e, 1)}>
+              <li
+                ref={Option1}
+                className="p-4 bg-blue-100 rounded-md cursor-pointer hover:bg-blue-200 transition"
+                onClick={(e) => checkAns(e, 1)}
+              >
                 {questions[index].option1}
               </li>
-              <li ref={Option2} className="p-4 bg-blue-100 rounded-md cursor-pointer hover:bg-blue-200 transition" onClick={(e) => checkAns(e, 2)}>
+              <li
+                ref={Option2}
+                className="p-4 bg-blue-100 rounded-md cursor-pointer hover:bg-blue-200 transition"
+                onClick={(e) => checkAns(e, 2)}
+              >
                 {questions[index].option2}
               </li>
-              <li ref={Option3} className="p-4 bg-blue-100 rounded-md cursor-pointer hover:bg-blue-200 transition" onClick={(e) => checkAns(e, 3)}>
+              <li
+                ref={Option3}
+                className="p-4 bg-blue-100 rounded-md cursor-pointer hover:bg-blue-200 transition"
+                onClick={(e) => checkAns(e, 3)}
+              >
                 {questions[index].option3}
               </li>
-              <li ref={Option4} className="p-4 bg-blue-100 rounded-md cursor-pointer hover:bg-blue-200 transition" onClick={(e) => checkAns(e, 4)}>
+              <li
+                ref={Option4}
+                className="p-4 bg-blue-100 rounded-md cursor-pointer hover:bg-blue-200 transition"
+                onClick={(e) => checkAns(e, 4)}
+              >
                 {questions[index].option4}
               </li>
             </ul>
