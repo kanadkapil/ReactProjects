@@ -88,3 +88,7 @@ Description: Instead of selecting just one category, allow users to take a quiz 
 
 Implementation: Create a new button to fetch random questions from all categories and display them in a mixed order.
 
+
+
+
+added point 1, 4, 6, 7 and 18
