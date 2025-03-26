@@ -19,7 +19,7 @@ function Card({ data, reference }) {
                 dragTransition={{ bounceDamping: 10, bounceStiffness: 600 }}
                 dragElastic={0.5}
                 whileHover={{ scale: 1.05 }}
-                className="p-4 relative w-70 h-80 text-white bg-zinc-900/60 rounded-[20px] overflow-hidden"
+                className="p-4 relative w-70 h-70 text-white bg-zinc-900/60 rounded-[20px] overflow-hidden"
             >
                 <IoFingerPrint size={25} color="white" />
                 <h3 className="text-lg font-bold my-3">{title}</h3>
@@ -31,7 +31,7 @@ function Card({ data, reference }) {
                 {desc.length > 100 && (
                     <button 
                         onClick={() => setIsModalOpen(true)} 
-                        className="px-3 py-1 mt-2 text-sm font-semibold bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+                        className="px-3 py-1 mt-2 text-sm font-semibold bg-zinc-700 text-white rounded-lg opacity-50 hover:opacity-100 transition "
                     >
                         Read More
                     </button>
