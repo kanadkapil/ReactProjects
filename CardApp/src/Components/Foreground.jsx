@@ -29,9 +29,9 @@ function Foreground() {
   return (
     <div
       ref={ref}
-      className="fixed top-0 left-0 z-[3] w-full h-full flex gap-5 p-2 flex-wrap bg-gradient-to-br from-pink-500 via-purple-600 to-indigo-700"
+      className="fixed top-0 left-0 z-[3] w-full h-full flex gap-5 p-2 flex-wrap bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-950 via-gray-600 to-stone-900"
     >
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-blue-400 via-teal-500 to-lime-600 opacity-20 animate-pulse"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r  from-zinc-950 via-stone-800 to-stone-900 opacity-20 animate-pulse"></div>
       {data.map((item, index) => {
         return <Card key={index} data={item} reference={ref} />;
       })}
