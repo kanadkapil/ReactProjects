@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+*{
+  font-family: "Gilroy", sans-serif;
+}
+
+
+/* for text highlight  */
+::selection{
+  /* background-color: #a4dd8a; */
+  color: #e09292;
+}
