@@ -11,7 +11,7 @@ function Foreground() {
     },
     {
       title: 'CDEF',
-      desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit ducimus quia voluptatem sint corporis eveniet!',
+      desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5',
       emoji: '💾',
     },
     {
