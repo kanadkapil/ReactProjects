@@ -6,24 +6,20 @@ function Foreground() {
   const data = [
     {
       title: 'ABC',
-      desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores!',
+      desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit ducimus quia voluptatem sint corporis eveniet!',
       emoji: '🤣',
     },
     {
-      title: 'Achoda',
-      desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores!',
+      title: 'CDEF',
+      desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit ducimus quia voluptatem sint corporis eveniet!',
       emoji: '💾',
     },
     {
       title: 'ABC',
-      desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores!',
+      desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5',
       emoji: '🤣',
     },
-    {
-      title: 'Achoda',
-      desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores!',
-      emoji: '💾',
-    },
+    
   ];
 
   return (
