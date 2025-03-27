@@ -1,12 +1,69 @@
-# React + Vite
+# Interactive Dashboard with Draggable Cards
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Dashboard Preview](https://via.placeholder.com/800x500.png?text=Dashboard+Preview) <!-- Add your screenshot here -->
 
-Currently, two official plugins are available:
+An interactive dashboard featuring draggable cards with modal popups, smooth animations, and dynamic backgrounds. Built with React, Tailwind CSS, and Framer Motion.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- 🖱️ Draggable cards with physics-based animations
+- 📖 Modal popups with full description view
+- 🎨 Dynamic gradient backgrounds with animated effects
+- ♿ Accessibility features (Escape key handling)
+- 📱 Responsive design
+- ✨ Smooth animations using Framer Motion
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Installation
+
+### Prerequisites
+- Node.js (v18+ recommended)
+- npm (v9+ recommended)
+
+### Steps
+1. Clone the repository:
+```bash
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+
+
+Install dependencies:
+npm install
+
+Start development server:
+npm run dev
+
+## Project Structure
+
+src/
+├── components/
+│   ├── Background.jsx
+│   ├── Card.jsx
+│   ├── Foreground.jsx
+│   ├── Modal.jsx
+│   └── Nav.jsx
+├── App.jsx
+└── main.jsx
+
+
+<br><br><br>
+
+⚡ Vite - Next-gen frontend tooling
+
+🎨 Tailwind CSS - Utility-first CSS framework
+
+🌀 Framer Motion - Animation library
+
+🖼️ react-icons - Icon library
+
+⚛️ React - JavaScript library for UI
+
+
+
+
+## Development Scripts
+
+
+npm run dev    # Start development server
+npm run build  # Create production build
+npm run lint   # Run ESLint
+npm run preview # Preview production build
