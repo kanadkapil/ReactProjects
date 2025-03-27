@@ -21,28 +21,27 @@ function Modal({ isOpen, onClose, title, description }) {
 
     // If modal isn't open, return null (nothing will render)
     if (!isOpen) return null;
-
     return (
         <div
-            className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+            className="fixed inset-0 flex items-center justify-center bg-zinc-900/80 z-50" // Reduced overlay darkness
             aria-labelledby="modal-title"
             role="dialog"
             aria-hidden={!isOpen}
         >
-            <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-4xl h-auto max-h-[80vh] relative overflow-hidden">
-                {/* Close button with aria-label for accessibility */}
+            <div className="bg-zinc-950/40 backdrop-blur-lg p-6 rounded-lg shadow-lg w-full max-w-4xl h-auto max-h-[80vh] relative overflow-hidden">
+                {/* Close button */}
                 <button
                     onClick={onClose}
-                    className="absolute top-3 right-3 mx-8 my-7 text-6xl text-gray-500 hover:text-red-400 transform hover:scale-[1.2] transition-transform duration-200"
+                    className="absolute top-3 right-3 mx-8 my-7 text-6xl text-gray-700 hover:text-red-400 transform hover:scale-[1.2] transition-transform duration-200"
                     aria-label="Close modal"
                 >
                     <FaHandMiddleFinger size={30} />
                 </button>
 
                 <div className="mt-10 px-10 h-[500px]">
-                    <h2 id="modal-title" className="text-4xl font-bold mb-4 text-blue-700">{title}</h2>
+                    <h2 id="modal-title" className="text-6xl font-bold mb-7 text-lime-800 drop-shadow-md">{title}</h2>
                     <div className="mb-20 pb-20 px-10 h-[500px] overflow-y-auto">
-                        <p className="text-gray-700 text-2xl mb-10">{description}</p>
+                        <p className="text-white text-2xl mb-10 font-medium drop-shadow-md">{description}</p>
                     </div>
                 </div>
             </div>
