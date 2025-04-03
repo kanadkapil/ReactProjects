@@ -1,0 +1,10 @@
+npm install axios react-icons
+
+npm i express mongoose cors
+
+npm i nodemon
+
+https://www.youtube.com/watch?v=BqRWK57dwqo
+
+server start nodemon index.js
+npm start
