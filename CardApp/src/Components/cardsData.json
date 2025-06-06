@@ -1,43 +1,58 @@
 [
     {
-      "title": "ABC",
-      "desc": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit ducimus quia voluptatem sint corporis eveniet!",
-      "emoji": "🤣"
+        "id": 1,
+        "title": "ABC",
+        "desc": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit ducimus quia voluptatem sint corporis eveniet!",
+        "emoji": "🤣",
+        "footerColor": "#bbbb11"
     },
     {
-      "title": "CDEF",
-      "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5",
-      "emoji": "💾"
+        "id": 2,
+        "title": "CDEF",
+        "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5",
+        "emoji": "💾",
+        "footerColor": "#bfffff"
     },
     {
-      "title": "ABC",
-      "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5",
-      "emoji": "🤣"
+        "id": 3,
+        "title": "ABC",
+        "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5",
+        "emoji": "🤣",
+        "footerColor": "#caffc8"
     },
     {
-      "title": "Weather Watch",
-      "desc": "Track real-time weather patterns across your favorite cities using advanced satellite mapping and machine learning predictions.",
-      "emoji": "🌦️"
+        "id": 4,
+        "title": "Weather Watch",
+        "desc": "Track real-time weather patterns across your favorite cities using advanced satellite mapping and machine learning predictions.",
+        "emoji": "🌦️",
+        "footerColor": "#d0f0ff"
     },
     {
-      "title": "Crypto Tracker",
-      "desc": "Monitor your crypto portfolio with live prices, historical charts, and instant alerts for Bitcoin, Ethereum, and altcoins.",
-      "emoji": "📈"
+        "id": 5,
+        "title": "Crypto Tracker",
+        "desc": "Monitor your crypto portfolio with live prices, historical charts, and instant alerts for Bitcoin, Ethereum, and altcoins.",
+        "emoji": "📈",
+        "footerColor": "#ffe0b2"
     },
     {
-      "title": "Workout Buddy",
-      "desc": "Plan, log, and optimize your workouts. Get AI-based suggestions and keep track of your strength and cardio goals.",
-      "emoji": "🏋️‍♂️"
+        "id": 6,
+        "title": "Workout Buddy",
+        "desc": "Plan, log, and optimize your workouts. Get AI-based suggestions and keep track of your strength and cardio goals.",
+        "emoji": "🏋️‍♂️",
+        "footerColor": "#ffd6e0"
     },
     {
-      "title": "Travelogue",
-      "desc": "Document your journeys with geotagged photos, travel tips, and journal entries. Share your adventures with the world!",
-      "emoji": "🌍"
+        "id": 7,
+        "title": "Travelogue",
+        "desc": "Document your journeys with geotagged photos, travel tips, and journal entries. Share your adventures with the world!",
+        "emoji": "🌍",
+        "footerColor": "#e0f7fa"
     },
     {
-      "title": "Zen Notes",
-      "desc": "A minimalist note-taking app for thoughts, ideas, and reminders. Now with voice input and dark mode support.",
-      "emoji": "🧘‍♀️"
+        "id": 8,
+        "title": "Zen Notes",
+        "desc": "A minimalist note-taking app for thoughts, ideas, and reminders. Now with voice input and dark mode support.",
+        "emoji": "🧘‍♀️",
+        "footerColor": "#e3f2fd"
     }
-  ]
-  
+]

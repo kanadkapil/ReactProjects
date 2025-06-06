@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Modal from './Modal';
 
 function Card({ data, reference }) {
-    const { title, desc, emoji } = data;
+    const { title, desc, emoji, footerColor } = data;  // Destructure footerColor
     const shortDesc = desc.length > 100 ? desc.slice(0, 100) + '...' : desc;
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -34,7 +34,11 @@ function Card({ data, reference }) {
                     </button>
                 )}
 
-                <div className="footer absolute bottom-0 left-0 w-full h-10 py-3 bg-lime-200">
+                {/* Footer background color is now dynamic from JSON */}
+                <div
+                    className="footer absolute bottom-0 left-0 w-full h-10 py-3"
+                    style={{ backgroundColor: footerColor || '#bbf7d0' }} // fallback if no color provided
+                >
                     <span className="flex justify-between px-4 text-black">
                         <p>{emoji}</p>
                         <FiDownload size={25} color="black" />
@@ -42,6 +46,7 @@ function Card({ data, reference }) {
                 </div>
             </motion.div>
 
+            {/* Modal for full description */}
             <Modal 
                 isOpen={isModalOpen} 
                 onClose={() => setIsModalOpen(false)} 
