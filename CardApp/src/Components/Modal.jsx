@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { FaHandMiddleFinger } from "react-icons/fa6";
 
 function Modal({ isOpen, onClose, title, description }) {
-    // Close the modal if the user presses the Escape key
     useEffect(() => {
         const handleEscapeKey = (e) => {
             if (e.key === 'Escape') {
@@ -19,20 +18,19 @@ function Modal({ isOpen, onClose, title, description }) {
         };
     }, [isOpen, onClose]);
 
-    // If modal isn't open, return null (nothing will render)
     if (!isOpen) return null;
+
     return (
         <div
-            className="fixed inset-0 flex items-center justify-center bg-zinc-900/80 z-50" // Reduced overlay darkness
+            className="fixed inset-0 flex items-center justify-center bg-zinc-900/80 z-50"
             aria-labelledby="modal-title"
             role="dialog"
             aria-hidden={!isOpen}
         >
             <div className="bg-zinc-950/40 backdrop-blur-lg p-6 rounded-lg shadow-lg w-full max-w-4xl h-auto max-h-[80vh] relative overflow-hidden">
-                {/* Close button */}
                 <button
                     onClick={onClose}
-                    className="absolute top-3 right-3 mx-8 my-7 text-6xl text-gray-700 hover:text-red-400 transform hover:scale-[1.2] transition-transform duration-200"
+                    className="absolute top-3 right-3 mx-8 my-7 text-6xl text-gray-700 hover:text-red-400 transform hover:scale-[1.5] transition-transform duration-200"
                     aria-label="Close modal"
                 >
                     <FaHandMiddleFinger size={30} />

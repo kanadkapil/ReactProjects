@@ -1,0 +1,43 @@
+[
+    {
+      "title": "ABC",
+      "desc": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit ducimus quia voluptatem sint corporis eveniet!",
+      "emoji": "🤣"
+    },
+    {
+      "title": "CDEF",
+      "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5",
+      "emoji": "💾"
+    },
+    {
+      "title": "ABC",
+      "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, dolores! lorem5 lorem5 lorem5 lorem5 lorem5 lorem5 lorem5",
+      "emoji": "🤣"
+    },
+    {
+      "title": "Weather Watch",
+      "desc": "Track real-time weather patterns across your favorite cities using advanced satellite mapping and machine learning predictions.",
+      "emoji": "🌦️"
+    },
+    {
+      "title": "Crypto Tracker",
+      "desc": "Monitor your crypto portfolio with live prices, historical charts, and instant alerts for Bitcoin, Ethereum, and altcoins.",
+      "emoji": "📈"
+    },
+    {
+      "title": "Workout Buddy",
+      "desc": "Plan, log, and optimize your workouts. Get AI-based suggestions and keep track of your strength and cardio goals.",
+      "emoji": "🏋️‍♂️"
+    },
+    {
+      "title": "Travelogue",
+      "desc": "Document your journeys with geotagged photos, travel tips, and journal entries. Share your adventures with the world!",
+      "emoji": "🌍"
+    },
+    {
+      "title": "Zen Notes",
+      "desc": "A minimalist note-taking app for thoughts, ideas, and reminders. Now with voice input and dark mode support.",
+      "emoji": "🧘‍♀️"
+    }
+  ]
+  

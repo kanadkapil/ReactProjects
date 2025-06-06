@@ -7,7 +7,6 @@ import Modal from './Modal';
 function Card({ data, reference }) {
     const { title, desc, emoji } = data;
     const shortDesc = desc.length > 100 ? desc.slice(0, 100) + '...' : desc;
-
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
@@ -24,9 +23,7 @@ function Card({ data, reference }) {
                 <IoFingerPrint size={25} color="white" />
                 <h3 className="text-lg font-bold my-3">{title}</h3>
                 
-                <p className="text-sm my-3 px-4">
-                    {shortDesc}
-                </p>
+                <p className="text-sm my-3 px-4">{shortDesc}</p>
 
                 {desc.length > 100 && (
                     <button 
@@ -45,7 +42,6 @@ function Card({ data, reference }) {
                 </div>
             </motion.div>
 
-            {/* Modal Component */}
             <Modal 
                 isOpen={isModalOpen} 
                 onClose={() => setIsModalOpen(false)} 

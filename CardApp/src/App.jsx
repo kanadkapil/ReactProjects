@@ -5,7 +5,6 @@ function App() {
   return (
     <>
       <div className="relative text-lg w-full h-screen bg-zinc-800">
-
         <Background />
         <Foreground />
 
