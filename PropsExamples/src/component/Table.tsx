@@ -1,5 +1,5 @@
 import React from 'react'
-import data from '../assets/tableData.json'
+import data from '../model/tableData.json'
 
 interface Props {
     id: number;

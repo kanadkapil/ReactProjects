@@ -1,0 +1,40 @@
+[
+    {
+        "id": 1,
+        "name": "Alice Utler",
+        "title": "Web Designer - Writer - Singer",
+        "role": "Student",
+        "education": "B.Tech, CSE",
+        "university": "LPU",
+        "year": "Final Year",
+        "imageA": "PicA.jpg",
+        "imageB": "PicB.jpg",
+        "active": false,
+        "socialLinks": {
+            "github": "https://github.com/kanadkapil",
+            "linkedin": "https://www.linkedin.com/in/kanadkapil/",
+            "email": "kanad.kapil@gmail.com",
+            "instagram": "https://www.instagram.com/kanad.kapil/",
+            "facebook": "https://www.facebook.com/kanad.kapil/"
+        }
+    },
+    {
+        "id": 2,
+        "name": "Bob Cray",
+        "title": "Frontend Developer - Photographer",
+        "role": "Graduate",
+        "education": "B.Sc, IT",
+        "university": "MIT",
+        "year": "2022",
+        "imageA": "PicB.jpg",
+        "imageB": "PicA.jpg",
+        "active": true,
+        "socialLinks": {
+            "github": "https://github.com/bobcray",
+            "linkedin": "https://www.linkedin.com/in/bobcray/",
+            "email": "bob.cray@example.com",
+            "instagram": "https://www.instagram.com/bob.cray/",
+            "facebook": "https://www.facebook.com/bob.cray/"
+        }
+    }
+]

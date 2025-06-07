@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from './Card'; // ✅ Adjust the path based on your folder structure
-import data from '../assets/cardData.json'; // ✅ Make sure path is correct
+import data from '../model/cardData.json'; // ✅ Make sure path is correct
 
 function CardList() {
     return (

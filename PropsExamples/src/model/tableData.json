@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "name": "Alice Johnson",
+        "details": "Frontend Developer",
+        "active": true
+    },
+    {
+        "id": 2,
+        "name": "Bob Smith",
+        "details": "Backend Developer",
+        "active": false
+    },
+    {
+        "id": 3,
+        "name": "Charlie Rose",
+        "details": "UX Designer",
+        "active": true
+    },
+    {
+        "id": 4,
+        "name": "Diana King",
+        "details": "Project Manager",
+        "active": true
+    },
+    {
+        "id": 5,
+        "name": "Ethan Wright",
+        "details": "DevOps Engineer",
+        "active": false
+    },
+    {
+        "id": 6,
+        "name": "Fiona Lee",
+        "details": "QA Tester",
+        "active": true
+    },
+    {
+        "id": 7,
+        "name": "George Hill",
+        "details": "Database Administrator",
+        "active": false
+    },
+    {
+        "id": 8,
+        "name": "Hannah Clark",
+        "details": "Mobile Developer",
+        "active": true
+    },
+    {
+        "id": 9,
+        "name": "Ian Green",
+        "details": "Security Analyst",
+        "active": true
+    },
+    {
+        "id": 10,
+        "name": "Julia Adams",
+        "details": "Data Scientist",
+        "active": false
+    }
+]

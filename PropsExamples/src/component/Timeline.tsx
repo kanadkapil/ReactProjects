@@ -1,6 +1,6 @@
 // Timeline.tsx
 import React from "react";
-import timelineData from "../assets/timelineData.json";
+import timelineData from "../model/timelineData.json";
 
 interface TimelineItem {
   year: string;

@@ -1,6 +1,6 @@
 // Carousel.tsx
 import React from "react";
-import carouselData from "../assets/carouselData.json";
+import carouselData from "../model/carouselData.json";
 
 interface Slide {
     id: number;

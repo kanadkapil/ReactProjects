@@ -4,7 +4,7 @@ import Table from './component/Table'
 import Carousel from './component/Carousel'
 import Timeline from './component/Timeline'
 import CardList from './component/CardList'
-
+import Profile from './component/Profile'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -21,8 +21,16 @@ function App() {
         <div className="my-5">
           <Timeline />
         </div>
-        <div className="my-5">
+        <div className="my-5 flex justify-center sm:justify-around mx-auto">
           <CardList />
+        </div>
+        <div className="my-5">
+          <div class="my-5 gap-4 grid sm:grid-cols-12 grid-cols-1">
+            <div
+              class="min-h-[860px] rounded-lg shadow-lg bg-violet-200 bg-opacity-20 backdrop-blur-3xl sm:col-span-4 p-4 flex flex-col overflow-y-auto">
+              <Profile />
+            </div>
+          </div>
         </div>
       </div>
 
