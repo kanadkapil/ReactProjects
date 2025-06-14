@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import './App.css';
 
 function App() {
@@ -6,6 +6,9 @@ function App() {
   const [numberAllowed, setNumberAllowed] = useState(false);
   const [charAllowed, setCharAllowed] = useState(false);
   const [password, setPassword] = useState("");
+  const [copied, setCopied] = useState(false); // Feedback state
+
+  const passwordInputRef = useRef(null);
 
   const passwordGenerator = useCallback(() => {
     let pass = "";
@@ -18,11 +21,20 @@ function App() {
       pass += str.charAt(char);
     }
     setPassword(pass);
-  }, [length, numberAllowed, charAllowed, setPassword]);
+  }, [length, numberAllowed, charAllowed]);
 
   useEffect(() => {
-    passwordGenerator(); // Generate a default password when the app loads
+    passwordGenerator();
   }, [passwordGenerator]);
+
+  const copyPasswordToClipboard = () => {
+    if (passwordInputRef.current) {
+      passwordInputRef.current.select();
+      document.execCommand('copy');
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 flex items-center justify-center px-4">
@@ -34,8 +46,15 @@ function App() {
             type="text"
             value={password}
             readOnly
+            ref={passwordInputRef}
             className="w-full p-3 rounded bg-gray-700 text-white font-mono text-lg"
           />
+          <button
+            className='bg-yellow-500 hover:bg-yellow-600 text-black py-2 px-4 rounded mt-2 w-full transition'
+            onClick={copyPasswordToClipboard}
+          >
+            {copied ? "✅ Copied!" : "Copy Password"}
+          </button>
         </div>
 
         <div className="mb-4">
@@ -50,12 +69,12 @@ function App() {
           />
         </div>
 
-        <div className="flex items-center space-x-4 mb-4">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between mb-4">
           <label className="flex items-center text-white space-x-2">
             <input
               type="checkbox"
               checked={numberAllowed}
-              onChange={() => setNumberAllowed((prev) => !prev)}
+              onChange={() => setNumberAllowed(prev => !prev)}
               className="accent-yellow-500"
             />
             <span>Include Numbers</span>
@@ -64,7 +83,7 @@ function App() {
             <input
               type="checkbox"
               checked={charAllowed}
-              onChange={() => setCharAllowed((prev) => !prev)}
+              onChange={() => setCharAllowed(prev => !prev)}
               className="accent-yellow-500"
             />
             <span>Include Symbols</span>
@@ -73,10 +92,11 @@ function App() {
 
         <button
           onClick={passwordGenerator}
-          className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-2 px-4 rounded transition"
+          className="w-full bg-yellow-500 hover:bg-lime-400 hover:scale-105 transform transition duration-300 text-black font-semibold py-2 px-4 rounded"
         >
           Generate Password
         </button>
+
       </div>
     </div>
   );
