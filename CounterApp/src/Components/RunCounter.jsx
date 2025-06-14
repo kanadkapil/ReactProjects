@@ -21,9 +21,12 @@ function RunCounter() {
         setCounter(counter + 3)
     }
 
+
+
+
     let [wicket, setWicket] = useState(0)
 
-    const wicket1 = () => {
+    const out = () => {
         setWicket(wicket + 1)
     }
 
@@ -47,7 +50,7 @@ function RunCounter() {
         <button onClick={triple}>Triple</button>
         <br />
         <br />
-        <button onClick={wicket1} disabled={wicket === 10}>Wicket</button>
+        <button onClick={out} disabled={wicket === 10}>Wicket</button>
 
         </div>
     )
