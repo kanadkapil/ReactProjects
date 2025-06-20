@@ -1,0 +1,147 @@
+# Set root folder name
+$root = "mern-blog-website"
+
+# Create root folder
+New-Item -ItemType Directory -Path $root -Force | Out-Null
+
+# Folder structure
+$folders = @(
+    "$root/backend/controllers", "$root/backend/models", "$root/backend/routes",
+    "$root/backend/middleware", "$root/backend/config", "$root/backend/uploads",
+    "$root/frontend/public", "$root/frontend/src/assets",
+    "$root/frontend/src/components/common", "$root/frontend/src/components/admin",
+    "$root/frontend/src/pages", "$root/frontend/src/pages/admin",
+    "$root/frontend/src/context", "$root/frontend/src/api",
+    "$root/frontend/src/styles"
+)
+
+# File templates
+$files = @{
+    "$root/backend/server.js" = "const express = require('express'); const app = express(); app.use(express.json()); app.listen(5000, () => console.log('Server running on port 5000'));"
+    "$root/backend/package.json" = "{`n  `"name`": `"backend`",`n  `"dependencies`": {`n    `"express`": `"^4.18.2`"`n  }`n}"
+    "$root/backend/.env" = "MONGO_URI=your_mongo_uri`nJWT_SECRET=your_jwt_secret"
+    "$root/backend/controllers/blogController.js" = "// Blog logic here"
+    "$root/backend/controllers/authController.js" = "// Auth logic for admin"
+    "$root/backend/models/Blog.js" = "// Blog Mongoose schema"
+    "$root/backend/models/User.js" = "// Admin/User Mongoose schema"
+    "$root/backend/routes/blogRoutes.js" = "// Blog routes"
+    "$root/backend/routes/authRoutes.js" = "// Auth routes"
+    "$root/backend/middleware/authMiddleware.js" = "// JWT middleware"
+    "$root/backend/middleware/errorMiddleware.js" = "// Global error handler"
+    "$root/backend/config/db.js" = "// MongoDB connection logic"
+
+    "$root/frontend/public/index.html" = "<!DOCTYPE html><html><head><title>Blog App</title></head><body><div id='root'></div></body></html>"
+    "$root/frontend/.env" = "VITE_API_URL=http://localhost:5000"
+    "$root/frontend/package.json" = "{`n  `"name`": `"frontend`",`n  `"dependencies`": {`n    `"react`": `"^18.2.0`"`n  }`n}"
+    "$root/frontend/vite.config.js" = @"
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()],
+})
+"@
+
+    "$root/frontend/src/components/common/Navbar.jsx" = "const Navbar = () => <nav>Navbar</nav>; export default Navbar;"
+    "$root/frontend/src/components/common/Footer.jsx" = "const Footer = () => <footer>Footer</footer>; export default Footer;"
+    "$root/frontend/src/components/common/BlogCard.jsx" = "// BlogCard component"
+    "$root/frontend/src/components/admin/BlogForm.jsx" = "// Admin blog form"
+
+    "$root/frontend/src/pages/Home.jsx" = "const Home = () => <div>Home Page</div>; export default Home;"
+    "$root/frontend/src/pages/BlogDetails.jsx" = "// Blog detail view"
+    "$root/frontend/src/pages/Login.jsx" = "// Admin login page"
+    "$root/frontend/src/pages/admin/AdminDashboard.jsx" = "// Admin dashboard"
+    "$root/frontend/src/pages/admin/CreateBlog.jsx" = "// Create blog post page"
+    "$root/frontend/src/pages/admin/EditBlog.jsx" = "// Edit blog post page"
+
+    "$root/frontend/src/context/AuthContext.js" = "// Context for admin authentication"
+    "$root/frontend/src/api/blogAPI.js" = "// Blog API calls"
+    "$root/frontend/src/api/authAPI.js" = "// Auth API calls"
+    "$root/frontend/src/styles/main.css" = "@tailwind base;`n@tailwind components;`n@tailwind utilities;"
+    "$root/frontend/src/App.jsx" = "const App = () => <div>App Component</div>; export default App;"
+    "$root/frontend/src/index.js" = "import ReactDOM from 'react-dom/client'; import App from './App'; ReactDOM.createRoot(document.getElementById('root')).render(<App />);"
+    "$root/frontend/src/routes.js" = "// React Router configuration"
+}
+
+# Create folders
+$folders | ForEach-Object {
+    New-Item -ItemType Directory -Path $_ -Force | Out-Null
+}
+
+# Create files with boilerplate
+foreach ($filePath in $files.Keys) {
+    $content = $files[$filePath]
+    Set-Content -Path $filePath -Value $content -Force
+}
+
+Write-Host "`n✅ Blog project structure created successfully!" -ForegroundColor Green
+
+# Backend Dependencies
+Write-Host "`n🔧 Backend dependencies:"
+Write-Host "1 - express, mongoose, dotenv, cors, nodemon"
+Write-Host "2 - bcryptjs, jsonwebtoken, multer"
+Write-Host "3 - All of the above"
+Write-Host "0 - Skip installation"
+$backendChoice = Read-Host "Enter choice"
+
+Set-Location ".\$root\backend"
+
+switch ($backendChoice) {
+    "1" { npm install express mongoose dotenv cors nodemon }
+    "2" { npm install bcryptjs jsonwebtoken multer }
+    "3" { npm install express mongoose dotenv cors nodemon bcryptjs jsonwebtoken multer }
+    default { Write-Host "Skipped backend install." }
+}
+
+Set-Location "..\.."
+
+# Frontend Setup
+Write-Host "`n⚙️ Setting up Vite React frontend..."
+Set-Location ".\$root"
+npm create vite@latest frontend -- --template react
+Set-Location "frontend"
+npm install
+
+# TailwindCSS and DaisyUI setup
+Write-Host "`n🎨 Frontend UI setup:"
+Write-Host "1 - TailwindCSS + react-toastify + react-icons"
+Write-Host "2 - TailwindCSS + DaisyUI + react-toastify + react-icons"
+Write-Host "0 - No UI libraries"
+$uiChoice = Read-Host "Enter choice"
+
+switch ($uiChoice) {
+    "1" {
+        npm install -D tailwindcss postcss autoprefixer
+        npx tailwindcss init -p
+        npm install react-toastify react-icons
+    }
+    "2" {
+        npm install -D tailwindcss postcss autoprefixer
+        npx tailwindcss init -p
+        npm install daisyui
+        npm install react-toastify react-icons
+        # Add DaisyUI to tailwind.config.js
+        $tailwindConfig = @"
+module.exports = {
+  content: ["./index.html", "./src/**/*.{js,jsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [require('daisyui')],
+}
+"@
+        Set-Content -Path "./tailwind.config.js" -Value $tailwindConfig -Force
+    }
+}
+
+# Frontend libs
+Write-Host "`n📦 Install React router and Axios?"
+Write-Host "1 - Yes (react-router-dom, axios)"
+Write-Host "0 - No"
+$frontendLibs = Read-Host "Enter choice"
+
+if ($frontendLibs -eq "1") {
+    npm install react-router-dom axios
+}
+
+Write-Host "`n🎉 MERN Blog project is fully set up!" -ForegroundColor Green
