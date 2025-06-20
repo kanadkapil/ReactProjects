@@ -1,0 +1,144 @@
+# Set root folder name
+$root = "e-commerce-template"
+
+# Create root folder first
+New-Item -ItemType Directory -Path $root -Force | Out-Null
+
+# Folder structure
+$folders = @(
+    "$root/backend/controllers", "$root/backend/models", "$root/backend/routes",
+    "$root/backend/middleware", "$root/backend/config", "$root/backend/uploads",
+    "$root/frontend/public", "$root/frontend/src/assets",
+    "$root/frontend/src/components/common", "$root/frontend/src/components/admin",
+    "$root/frontend/src/pages", "$root/frontend/src/pages/admin",
+    "$root/frontend/src/redux/slices", "$root/frontend/src/api",
+    "$root/frontend/src/utils", "$root/frontend/src/styles"
+)
+
+# File templates
+$files = @{
+    "$root/backend/server.js" = "const express = require('express'); const app = express(); app.listen(5000, () => console.log('Server running'));"
+    "$root/backend/package.json" = "{`n  `"name`": `"backend`",`n  `"dependencies`": {`n    `"express`": `"^4.18.2`"`n  }`n}"
+    "$root/backend/.env" = "MONGO_URI=your_mongo_uri`nJWT_SECRET=your_jwt_secret"
+    "$root/backend/controllers/productController.js" = "// Handles product logic"
+    "$root/backend/controllers/userController.js" = "// Handles user logic"
+    "$root/backend/controllers/orderController.js" = "// Handles order logic"
+    "$root/backend/models/productModel.js" = "// Mongoose schema for products"
+    "$root/backend/models/userModel.js" = "// Mongoose schema for users"
+    "$root/backend/models/orderModel.js" = "// Mongoose schema for orders"
+    "$root/backend/routes/productRoutes.js" = "// Routes for product endpoints"
+    "$root/backend/routes/userRoutes.js" = "// Routes for user endpoints"
+    "$root/backend/routes/orderRoutes.js" = "// Routes for order endpoints"
+    "$root/backend/middleware/authMiddleware.js" = "// Auth middleware function"
+    "$root/backend/middleware/errorMiddleware.js" = "// Error handling middleware"
+    "$root/backend/config/db.js" = "// MongoDB connection setup"
+    "$root/backend/config/stripe.js" = "// Stripe payment configuration"
+
+    "$root/frontend/public/index.html" = "<!DOCTYPE html><html><head><title>E-Commerce</title></head><body><div id='root'></div></body></html>"
+    "$root/frontend/.env" = "VITE_API_URL=http://localhost:5000"
+    "$root/frontend/package.json" = "{`n  `"name`": `"frontend`",`n  `"dependencies`": {`n    `"react`": `"^18.2.0`"`n  }`n}"
+    "$root/frontend/vite.config.js" = @"
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite';
+import viteCompression from 'vite-plugin-compression';
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+})
+"@
+    "$root/frontend/src/components/common/Navbar.jsx" = "const Navbar = () => <nav>Navbar</nav>; export default Navbar;"
+    "$root/frontend/src/components/common/Footer.jsx" = "const Footer = () => <footer>Footer</footer>; export default Footer;"
+    "$root/frontend/src/components/common/ProductCard.jsx" = "const ProductCard = () => <div>Product</div>; export default ProductCard;"
+    "$root/frontend/src/components/common/Loader.jsx" = "const Loader = () => <div>Loading...</div>; export default Loader;"
+    "$root/frontend/src/components/admin/AdminSidebar.jsx" = "const AdminSidebar = () => <aside>Admin</aside>; export default AdminSidebar;"
+    "$root/frontend/src/components/admin/ProductTable.jsx" = "// Product table UI"
+    "$root/frontend/src/components/admin/UserTable.jsx" = "// User table UI"
+    "$root/frontend/src/components/admin/OrderStats.jsx" = "// Order stats UI"
+    "$root/frontend/src/pages/Home.jsx" = "const Home = () => <div>Home</div>; export default Home;"
+    "$root/frontend/src/pages/ProductList.jsx" = "// Product list page"
+    "$root/frontend/src/pages/ProductDetails.jsx" = "// Product details page"
+    "$root/frontend/src/pages/Cart.jsx" = "// Cart page"
+    "$root/frontend/src/pages/Login.jsx" = "// Login page"
+    "$root/frontend/src/pages/Register.jsx" = "// Register page"
+    "$root/frontend/src/pages/Checkout.jsx" = "// Checkout page"
+    "$root/frontend/src/pages/UserDashboard.jsx" = "// User dashboard"
+    "$root/frontend/src/pages/admin/AdminDashboard.jsx" = "// Admin dashboard"
+    "$root/frontend/src/pages/admin/ManageProducts.jsx" = "// Manage products page"
+    "$root/frontend/src/pages/admin/ManageOrders.jsx" = "// Manage orders page"
+    "$root/frontend/src/pages/admin/ManageUsers.jsx" = "// Manage users page"
+    "$root/frontend/src/redux/store.js" = "// Redux store setup"
+    "$root/frontend/src/redux/slices/cartSlice.js" = "// Cart slice"
+    "$root/frontend/src/redux/slices/authSlice.js" = "// Auth slice"
+    "$root/frontend/src/redux/slices/productSlice.js" = "// Product slice"
+    "$root/frontend/src/api/axios.js" = "// Axios instance"
+    "$root/frontend/src/api/productAPI.js" = "// Product API calls"
+    "$root/frontend/src/utils/formatPrice.js" = "// Price formatting function"
+    "$root/frontend/src/App.jsx" = "const App = () => <div>App</div>; export default App;"
+    "$root/frontend/src/index.js" = "import ReactDOM from 'react-dom'; ReactDOM.render(<App />, document.getElementById('root'));"
+    "$root/frontend/src/routes.js" = "// Routing logic"
+    "$root/frontend/src/styles/main.css" = "/* Global styles */"
+}
+
+# Create folders
+$folders | ForEach-Object {
+    New-Item -ItemType Directory -Path $_ -Force | Out-Null
+}
+
+# Create files with boilerplate
+foreach ($filePath in $files.Keys) {
+    $content = $files[$filePath]
+    Set-Content -Path $filePath -Value $content -Force
+}
+
+Write-Host "`n✅ Project structure created successfully!" -ForegroundColor Green
+
+# Backend Dependencies
+Write-Host "`n🔧 Select backend dependencies:"
+Write-Host "1 - express, mongoose, dotenv, cors, nodemon"
+Write-Host "2 - bcryptjs, jsonwebtoken, multer, cloudinary, stripe"
+Write-Host "3 - All of the above"
+Write-Host "0 - Only install package.json (npm i)"
+$backendChoice = Read-Host "Enter choice"
+
+Set-Location ".\$root\backend"
+
+switch ($backendChoice) {
+    "1" { npm install express mongoose dotenv cors nodemon }
+    "2" { npm install bcryptjs jsonwebtoken multer cloudinary stripe }
+    "3" { npm install express mongoose dotenv cors nodemon bcryptjs jsonwebtoken multer cloudinary stripe }
+    default { npm install }
+}
+
+Set-Location "..\.."
+
+# Frontend Setup
+Write-Host "`n⚙️ Setting up Vite React frontend..."
+Set-Location ".\$root"
+npm create vite@latest frontend -- --template react
+Set-Location "frontend"
+npm install
+
+# TailwindCSS/DaisyUI prompt
+Write-Host "`n🎨 Frontend UI setup:"
+Write-Host "1 - TailwindCSS + react-toastify, react-icons"
+Write-Host "2 - TailwindCSS + DaisyUI + react-toastify, react-icons"
+Write-Host "0 - No styling packages"
+$uiChoice = Read-Host "Enter choice"
+
+switch ($uiChoice) {
+    "1" { npm install tailwindcss@latest @tailwindcss/vite@latest react-toastify react-icons }
+    "2" { npm install tailwindcss@latest @tailwindcss/vite@latest daisyui@latest react-toastify react-icons }
+}
+
+# Ask for routing and redux packages
+Write-Host "`n📦 Frontend logic packages:"
+Write-Host "1 - Install axios, react-router-dom, redux, react-redux, @reduxjs/toolkit"
+Write-Host "0 - Skip"
+$frontendLibs = Read-Host "Enter choice"
+
+if ($frontendLibs -eq "1") {
+    npm install axios react-router-dom redux react-redux @reduxjs/toolkit
+}
+
+Write-Host "`n🎉 E-commerce template fully set up!" -ForegroundColor Green
