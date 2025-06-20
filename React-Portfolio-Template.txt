@@ -4,10 +4,11 @@ $root = "portfolio-mern"
 # Create root folder first
 New-Item -ItemType Directory -Path $root -Force | Out-Null
 
-# Folder structure
+# Folder structure (FIXED: added backend/utils)
 $folders = @(
     "$root/backend/controllers", "$root/backend/models", "$root/backend/routes",
     "$root/backend/middleware", "$root/backend/config", "$root/backend/uploads",
+    "$root/backend/utils",                                 # ✅ FIXED missing folder
     "$root/frontend/public", "$root/frontend/src/assets",
     "$root/frontend/src/components/common", "$root/frontend/src/components/admin",
     "$root/frontend/src/pages", "$root/frontend/src/pages/admin",
@@ -111,7 +112,7 @@ npm create vite@latest frontend -- --template react
 Set-Location "frontend"
 npm install
 
-# Tailwind + UI libraries
+# Tailwind + UI libraries (Updated)
 Write-Host "`n🎨 Choose UI libraries:"
 Write-Host "1 - TailwindCSS only"
 Write-Host "2 - TailwindCSS + DaisyUI + react-icons + toastify"
@@ -119,14 +120,20 @@ Write-Host "0 - Skip"
 $uiChoice = Read-Host "Enter choice"
 
 switch ($uiChoice) {
-    "1" { npm install -D tailwindcss postcss autoprefixer; npx tailwindcss init -p }
-    "2" { npm install -D tailwindcss postcss autoprefixer; npx tailwindcss init -p; npm install daisyui react-icons react-toastify }
+    "1" {
+        npm install tailwindcss @tailwindcss/vite
+        npx tailwindcss init -p
+    }
+    "2" {
+        npm install tailwindcss@latest @tailwindcss/vite@latest daisyui@latest react-icons react-toastify
+        npx tailwindcss init -p
+    }
 }
 
-# Logic libs
+# Logic libraries
 Write-Host "`n📦 Install logic helpers:"
 Write-Host "1 - react-router-dom, axios"
-Write-Host "2 - + context + react-hook-form, zod"
+Write-Host "2 - + react-hook-form, zod"
 Write-Host "0 - Skip"
 $logicLibs = Read-Host "Enter choice"
 
