@@ -1,0 +1,138 @@
+# Set root folder name
+$root = "portfolio-mern"
+
+# Create root folder first
+New-Item -ItemType Directory -Path $root -Force | Out-Null
+
+# Folder structure
+$folders = @(
+    "$root/backend/controllers", "$root/backend/models", "$root/backend/routes",
+    "$root/backend/middleware", "$root/backend/config", "$root/backend/uploads",
+    "$root/frontend/public", "$root/frontend/src/assets",
+    "$root/frontend/src/components/common", "$root/frontend/src/components/admin",
+    "$root/frontend/src/pages", "$root/frontend/src/pages/admin",
+    "$root/frontend/src/context", "$root/frontend/src/hooks",
+    "$root/frontend/src/api", "$root/frontend/src/utils", "$root/frontend/src/styles"
+)
+
+# File templates
+$files = @{
+    "$root/backend/server.js" = "const express = require('express'); const app = express(); app.listen(5000, () => console.log('Portfolio backend running'));"
+    "$root/backend/package.json" = "{`n  `"name`": `"backend`",`n  `"dependencies`": {`n    `"express`": `"^4.18.2`"`n  }`n}"
+    "$root/backend/.env" = "MONGO_URI=your_mongo_uri`nJWT_SECRET=your_jwt_secret"
+    "$root/backend/controllers/aboutController.js" = "// About section logic"
+    "$root/backend/controllers/projectController.js" = "// Project section logic"
+    "$root/backend/controllers/blogController.js" = "// Blog section logic"
+    "$root/backend/models/userModel.js" = "// Mongoose schema for user"
+    "$root/backend/models/aboutModel.js" = "// About schema"
+    "$root/backend/models/projectModel.js" = "// Project schema"
+    "$root/backend/models/blogModel.js" = "// Blog schema"
+    "$root/backend/models/testimonialModel.js" = "// Testimonial schema"
+    "$root/backend/routes/aboutRoutes.js" = "// About routes"
+    "$root/backend/routes/projectRoutes.js" = "// Project routes"
+    "$root/backend/routes/blogRoutes.js" = "// Blog routes"
+    "$root/backend/routes/authRoutes.js" = "// Auth routes"
+    "$root/backend/middleware/authMiddleware.js" = "// JWT Auth middleware"
+    "$root/backend/middleware/errorMiddleware.js" = "// Global error handler"
+    "$root/backend/config/db.js" = "// MongoDB connection"
+    "$root/backend/utils/logger.js" = "// Custom logger"
+
+    "$root/frontend/public/index.html" = "<!DOCTYPE html><html><head><title>Portfolio</title></head><body><div id='root'></div></body></html>"
+    "$root/frontend/.env" = "VITE_API_URL=http://localhost:5000"
+    "$root/frontend/package.json" = "{`n  `"name`": `"frontend`",`n  `"dependencies`": {`n    `"react`": `"^18.2.0`"`n  }`n}"
+    "$root/frontend/vite.config.js" = @"
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+export default defineConfig({
+  plugins: [react()],
+})
+"@
+    "$root/frontend/src/components/common/Navbar.jsx" = "const Navbar = () => <nav>Navbar</nav>; export default Navbar;"
+    "$root/frontend/src/components/common/Footer.jsx" = "const Footer = () => <footer>Footer</footer>; export default Footer;"
+    "$root/frontend/src/components/common/ThemeToggle.jsx" = "// Dark/light toggle"
+    "$root/frontend/src/components/common/ProjectCard.jsx" = "// Project UI card"
+    "$root/frontend/src/components/admin/AdminSidebar.jsx" = "// Admin sidebar nav"
+    "$root/frontend/src/pages/Home.jsx" = "const Home = () => <div>Home</div>; export default Home;"
+    "$root/frontend/src/pages/About.jsx" = "// About section"
+    "$root/frontend/src/pages/Projects.jsx" = "// Projects section"
+    "$root/frontend/src/pages/Blog.jsx" = "// Blog posts"
+    "$root/frontend/src/pages/Contact.jsx" = "// Contact form"
+    "$root/frontend/src/pages/Resume.jsx" = "// Resume view/download"
+    "$root/frontend/src/pages/admin/AdminDashboard.jsx" = "// Admin dashboard"
+    "$root/frontend/src/pages/admin/ManageProjects.jsx" = "// CRUD project content"
+    "$root/frontend/src/pages/admin/ManageBlog.jsx" = "// CRUD blog posts"
+    "$root/frontend/src/pages/admin/ManageAbout.jsx" = "// Edit About section"
+    "$root/frontend/src/context/AuthContext.jsx" = "// Context for auth"
+    "$root/frontend/src/hooks/useAuth.js" = "// Custom auth hook"
+    "$root/frontend/src/api/axios.js" = "// Axios instance setup"
+    "$root/frontend/src/utils/validators.js" = "// Validation functions"
+    "$root/frontend/src/styles/global.css" = "/* Global styles here */"
+    "$root/frontend/src/App.jsx" = "const App = () => <div>App</div>; export default App;"
+    "$root/frontend/src/index.js" = "import ReactDOM from 'react-dom'; ReactDOM.render(<App />, document.getElementById('root'));"
+    "$root/frontend/src/routes.js" = "// React Router config"
+}
+
+# Create folders
+$folders | ForEach-Object {
+    New-Item -ItemType Directory -Path $_ -Force | Out-Null
+}
+
+# Create files with boilerplate
+foreach ($filePath in $files.Keys) {
+    $content = $files[$filePath]
+    Set-Content -Path $filePath -Value $content -Force
+}
+
+Write-Host "`n✅ Portfolio project structure created successfully!" -ForegroundColor Green
+
+# Backend Dependencies
+Write-Host "`n🔧 Backend dependency setup:"
+Write-Host "1 - express, mongoose, dotenv, cors, nodemon"
+Write-Host "2 - bcryptjs, jsonwebtoken, multer, helmet"
+Write-Host "3 - All of the above"
+Write-Host "0 - Only install package.json (npm i)"
+$backendChoice = Read-Host "Enter choice"
+
+Set-Location ".\$root\backend"
+
+switch ($backendChoice) {
+    "1" { npm install express mongoose dotenv cors nodemon }
+    "2" { npm install bcryptjs jsonwebtoken multer helmet }
+    "3" { npm install express mongoose dotenv cors nodemon bcryptjs jsonwebtoken multer helmet }
+    default { npm install }
+}
+
+Set-Location "..\.."
+
+# Frontend Setup
+Write-Host "`n⚙️ Creating Vite React frontend..."
+Set-Location ".\$root"
+npm create vite@latest frontend -- --template react
+Set-Location "frontend"
+npm install
+
+# Tailwind + UI libraries
+Write-Host "`n🎨 Choose UI libraries:"
+Write-Host "1 - TailwindCSS only"
+Write-Host "2 - TailwindCSS + DaisyUI + react-icons + toastify"
+Write-Host "0 - Skip"
+$uiChoice = Read-Host "Enter choice"
+
+switch ($uiChoice) {
+    "1" { npm install -D tailwindcss postcss autoprefixer; npx tailwindcss init -p }
+    "2" { npm install -D tailwindcss postcss autoprefixer; npx tailwindcss init -p; npm install daisyui react-icons react-toastify }
+}
+
+# Logic libs
+Write-Host "`n📦 Install logic helpers:"
+Write-Host "1 - react-router-dom, axios"
+Write-Host "2 - + context + react-hook-form, zod"
+Write-Host "0 - Skip"
+$logicLibs = Read-Host "Enter choice"
+
+switch ($logicLibs) {
+    "1" { npm install react-router-dom axios }
+    "2" { npm install react-router-dom axios react-hook-form zod }
+}
+
+Write-Host "`n🎉 Portfolio MERN project setup complete!" -ForegroundColor Green
