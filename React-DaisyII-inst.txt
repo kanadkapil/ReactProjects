@@ -1,0 +1,54 @@
+# Install dependencies
+Write-Host "Installing TailwindCSS, @tailwindcss/vite, and DaisyUI..."
+npm install tailwindcss@latest @tailwindcss/vite@latest daisyui@latest
+
+# Update vite.config.js
+$viteConfig = @"
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite';
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+})
+"@
+
+Set-Content -Path "vite.config.js" -Value $viteConfig -Encoding UTF8
+Write-Host "vite.config.js updated."
+
+# Update src/App.jsx
+$appJsx = @"
+import React from 'react';
+
+function App() {
+  return (
+    <div className="min-h-screen flex flex-col justify-between bg-base-100 text-base-content text-center">
+      <h1 className="text-3xl font-bold mt-8">Tailwind Active</h1>
+      <p className="mt-4 mx-4">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fermentum lorem ac justo laoreet, sit amet blandit sapien tincidunt.
+      </p>
+    </div>
+  );
+}
+
+export default App;
+"@
+
+Set-Content -Path "src\App.jsx" -Value $appJsx -Encoding UTF8
+Write-Host "App.jsx updated."
+
+# Update App.css
+$appCss = @"
+@import 'tailwindcss';
+@plugin 'daisyui';
+"@
+
+Set-Content -Path "src\App.css" -Value $appCss -Encoding UTF8
+Write-Host "App.css updated."
+
+# Update index.css
+Set-Content -Path "src\index.css" -Value $appCss -Encoding UTF8
+Write-Host "index.css updated."
+
+Write-Host "✅ TailwindCSS + DaisyUI setup complete."
