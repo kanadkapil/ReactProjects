@@ -1,9 +1,11 @@
-# PowerShell script to install DaisyUI and TailwindCSS in an existing React + Vite project
+# DaisyUI + TailwindCSS + Component Setup for React + Vite
 
-# 1. Install packages
+# 1. Install required packages
+Write-Host "Installing tailwindcss, @tailwindcss/vite, and daisyui..."
 npm install tailwindcss@latest @tailwindcss/vite@latest daisyui@latest
 
 # 2. Write vite.config.js
+Write-Host "Creating vite.config.js..."
 @"
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -15,39 +17,137 @@ export default defineConfig({
 })
 "@ | Out-File -Encoding utf8 vite.config.js
 
-# 3. Write App.css
+# 3. Ensure src folder exists
+if (!(Test-Path -Path "src")) {
+    New-Item -ItemType Directory -Path "src"
+}
+
+# 4. Write App.css
+Write-Host "Creating App.css and index.css with Tailwind/DaisyUI imports..."
 @"
 @import 'tailwindcss';
 @plugin 'daisyui';
 "@ | Out-File -Encoding utf8 src/App.css
 
-# 4. Write index.css (same content)
+# 5. Write index.css
 @"
 @import 'tailwindcss';
 @plugin 'daisyui';
 "@ | Out-File -Encoding utf8 src/index.css
 
-# 5. Write sample App.jsx with DaisyUI components
+# 6. Ensure components folder exists
+$componentsPath = "src/components"
+if (!(Test-Path -Path $componentsPath)) {
+    New-Item -ItemType Directory -Path $componentsPath
+}
+
+# --- Navbar.jsx ---
+@"
+import React from 'react';
+
+const Navbar = () => (
+  <div className="navbar bg-primary text-primary-content">
+    <button className="btn btn-ghost text-xl">Logo</button>
+  </div>
+);
+
+export default Navbar;
+"@ | Out-File -Encoding utf8 "$componentsPath/Navbar.jsx"
+
+# --- Hero.jsx ---
+@"
+import React from 'react';
+
+const Hero = () => (
+  <div
+    className="hero min-h-screen"
+    style={{
+      backgroundImage:
+        "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
+    }}
+  >
+    <div className="hero-overlay"></div>
+    <div className="hero-content text-neutral-content text-center">
+      <div className="max-w-md">
+        <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+        <p className="mb-5">
+          Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+          quasi. In deleniti eaque aut repudiandae et a id nisi.
+        </p>
+        <button className="btn btn-primary">Get Started</button>
+      </div>
+    </div>
+  </div>
+);
+
+export default Hero;
+"@ | Out-File -Encoding utf8 "$componentsPath/Hero.jsx"
+
+# --- Card.jsx ---
+@"
+import React from 'react';
+
+const Card = () => (
+  <div className="card bg-base-100 w-96 shadow-sm">
+    <figure>
+      <img
+        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+        alt="Shoes"
+      />
+    </figure>
+    <div className="card-body">
+      <h2 className="card-title">
+        Card Title
+        <div className="badge badge-secondary">NEW</div>
+      </h2>
+      <p>
+        A card component has a figure, a body part, and inside body there are title and actions parts
+      </p>
+      <div className="card-actions justify-end">
+        <div className="badge badge-outline">Fashion</div>
+        <div className="badge badge-outline">Products</div>
+      </div>
+    </div>
+  </div>
+);
+
+export default Card;
+"@ | Out-File -Encoding utf8 "$componentsPath/Card.jsx"
+
+# --- Footer.jsx ---
+@"
+import React from 'react';
+
+const Footer = () => (
+  <footer className="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
+    <aside>
+      <p>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
+    </aside>
+  </footer>
+);
+
+export default Footer;
+"@ | Out-File -Encoding utf8 "$componentsPath/Footer.jsx"
+
+# --- App.jsx ---
+Write-Host "Creating App.jsx and including all DaisyUI components..."
 @"
 import React from 'react';
 import './App.css';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Card from './components/Card';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className='min-h-screen bg-base-200 flex flex-col items-center justify-center p-10'>
-      <h1 className='text-5xl font-bold mb-8'>Welcome to DaisyUI + Vite + React</h1>
-      
-      <button className='btn btn-primary mb-4'>Primary Button</button>
-      
-      <div className='card w-96 bg-base-100 shadow-xl'>
-        <div className='card-body'>
-          <h2 className='card-title'>DaisyUI Card</h2>
-          <p>This is a simple card component using DaisyUI styles.</p>
-          <div className='card-actions justify-end'>
-            <button className='btn btn-secondary'>Action</button>
-          </div>
-        </div>
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <Hero />
+      <div className="flex justify-center p-10">
+        <Card />
       </div>
+      <Footer />
     </div>
   );
 }
@@ -55,4 +155,4 @@ function App() {
 export default App;
 "@ | Out-File -Encoding utf8 src/App.jsx
 
-Write-Host "Setup complete! TailwindCSS, DaisyUI installed and configured."
+Write-Host "`n✅ Setup complete! DaisyUI, TailwindCSS installed and components added."
