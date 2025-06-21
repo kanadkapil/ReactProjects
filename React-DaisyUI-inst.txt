@@ -1,0 +1,58 @@
+# PowerShell script to install DaisyUI and TailwindCSS in an existing React + Vite project
+
+# 1. Install packages
+npm install tailwindcss@latest @tailwindcss/vite@latest daisyui@latest
+
+# 2. Write vite.config.js
+@"
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite';
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+})
+"@ | Out-File -Encoding utf8 vite.config.js
+
+# 3. Write App.css
+@"
+@import 'tailwindcss';
+@plugin 'daisyui';
+"@ | Out-File -Encoding utf8 src/App.css
+
+# 4. Write index.css (same content)
+@"
+@import 'tailwindcss';
+@plugin 'daisyui';
+"@ | Out-File -Encoding utf8 src/index.css
+
+# 5. Write sample App.jsx with DaisyUI components
+@"
+import React from 'react';
+import './App.css';
+
+function App() {
+  return (
+    <div className='min-h-screen bg-base-200 flex flex-col items-center justify-center p-10'>
+      <h1 className='text-5xl font-bold mb-8'>Welcome to DaisyUI + Vite + React</h1>
+      
+      <button className='btn btn-primary mb-4'>Primary Button</button>
+      
+      <div className='card w-96 bg-base-100 shadow-xl'>
+        <div className='card-body'>
+          <h2 className='card-title'>DaisyUI Card</h2>
+          <p>This is a simple card component using DaisyUI styles.</p>
+          <div className='card-actions justify-end'>
+            <button className='btn btn-secondary'>Action</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+"@ | Out-File -Encoding utf8 src/App.jsx
+
+Write-Host "Setup complete! TailwindCSS, DaisyUI installed and configured."
